@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_wizard_consulta_migo_exchange_form" model="ir.ui.view">
+            <field name="name">wizard.consulta.migo.exchange.form</field>
+            <field name="model">wizard.consulta.migo.exchange</field>
+            <field name="arch" type="xml">
+                <form string="Consulta Migo Exchange">
+                    <group col="2">
+                        <group>
+                            <field name="inicial_date"/>
+                        </group>
+                        <group>
+                            <field name="end_date"/>
+                        </group>
+                    </group>
+
+                    <footer>
+                        <button string="Aceptar" name="consulta_migo_exchange" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_consulta_migo_exchange" model="ir.actions.act_window">
+            <field name="name">Consulta Migo Exchange</field>
+            <field name="res_model">wizard.consulta.migo.exchange</field>
+            <field name="view_mode">form</field>
+            <field name="context">{'consulta_migo_exchange': True}</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

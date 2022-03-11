@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="xmarts_res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">xmarts.res.config.settings.view.form.inherit</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='update_currency_live']" position="after">
+                <div attrs="{'invisible': [('module_currency_rate_live', '=', False)]}">
+                    <div class="mt8">
+                        <button type="action" name="%(action_consulta_migo_exchange)d" discard="0" class="btn btn-link" data-original-title="" title="">
+                            <i class="fa fa-fw o_button_icon fa-arrow-right"></i><span>Consulta Migo Exchange</span>
+                        </button>
+                    </div>
+
+                    <div class="row mt16">
+                        <field name="currency_provider" attrs="{'invisible': [('module_currency_rate_live', '=', True)]}"
+                               position="attributes">
+                            <attribute name="invisible">True</attribute>
+                        </field>
+                    </div>
+                    <field name="xmarts_currency_provider" attrs="{'invisible': [('module_currency_rate_live', '=', True)]}" position="before">
+                        <field name="currency_provider" attrs="{'invisible': [('module_currency_rate_live', '=', False)]}"/>
+                    </field>
+                </div>
+            </xpath>
+
+            <xpath expr="//div[@id='update_currency_live']" position="after">
+                <div attrs="{'invisible': [('module_currency_rate_live', '=', True)]}">
+                    <div class="row mt16">
+                        <label string="Service" for="xmarts_currency_provider" class="col-lg-3 o_light_label"/>
+                        <field name="xmarts_currency_provider"/>
+                    </div>
+                    <div class="row">
+                        <label string="Interval" for="xmarts_currency_interval_unit" class="col-lg-3 o_light_label"/>
+                        <field name="xmarts_currency_interval_unit"/>
+                    </div>
+                    <div class="mt8 row">
+                        <label string="Next Run" for="currency_next_execution_date" class="col-lg-3 o_light_label"/>
+                        <field name="currency_next_execution_date"/>
+                        <button name="update_currency_rates_manually" type="object" class="btn-link">
+                            <i title="Update now" role="img" aria-label="Update now" class="fa fa-fw fa-refresh"></i>
+                        </button>
+                    </div>
+                    <div class="mt8">
+                        <button type="action" name="%(action_consulta_migo_exchange)d" discard="0" class="btn btn-link" data-original-title="" title="">
+                            <i class="fa fa-fw o_button_icon fa-arrow-right"></i><span>Consulta Migo Exchange</span>
+                        </button>
+                    </div>
+
+                </div>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="xmpe_l10n_pe_currency_tree" model="ir.ui.view">
+            <field name="name">xmpe_l10n_pe_currency.res.currency.tree</field>
+            <field name="model">res.currency</field>
+            <field name="inherit_id" ref="base.view_currency_tree"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="rate_type"/>
+                </field>
+                <field name="rate" position="before">
+                    <field name="rate_inv" digits="[12,6]"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="xmpe_l10n_pe_currency_form" model="ir.ui.view">
+            <field name="name">xmpe_l10n_pe_currency.res.currency.form</field>
+            <field name="model">res.currency</field>
+            <field name="inherit_id" ref="base.view_currency_form"/>
+            <field name="arch" type="xml">
+                 <field name="rate" position="after">
+                    <field name="rate" force_save="1" digits="[12,6]"/>
+                    <field name="rate_inv" force_save="1" digits="[12,6]"/>
+                </field>
+                <field name="currency_subunit_label" position="after">
+                    <field name="rate_type"/>
+                </field>
+                <field name="rate" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+            </field>
+        </record>
+
+        <record id="xmpe_l10n_pe_currency_rate_tree" model="ir.ui.view">
+            <field name="name">xmpe_l10n_pe_currency.res.currency.rate.tree</field>
+            <field name="model">res.currency.rate</field>
+            <field name="inherit_id" ref="base.view_currency_rate_tree"/>
+            <field name="arch" type="xml">
+                <field name="rate" position="after">
+                    <field name="rate_inv" digits="[12,12]"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="xmpe_l10n_pe_currency_rate_form" model="ir.ui.view">
+            <field name="name">xmpe_l10n_pe_currency.res.currency.rate.form</field>
+            <field name="model">res.currency.rate</field>
+            <field name="inherit_id" ref="base.view_currency_rate_form"/>
+            <field name="arch" type="xml">
+                 <field name="rate" position="after">
+                    <field name="rate_inv" force_save="1" readonly="1" digits="[12,12]"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>
